@@ -1,0 +1,92 @@
+COMO CREAR APPS EN IONIC
+
+1_  Instalar ionic (-g/global):
+      
+      En consola:
+        npm install -g @ionic/cli
+
+2_ Crear proyecto de ionic con react
+
+      En consola
+        ionic start "nombre_app" --type=react
+      Usando un template:
+        ionic start "nombre_app" "nombre_del_template" --type=react
+      Ejemplo:
+        ionic start app_web sidemenu --type=react
+
+3_  Integrar capacitor:
+      
+      En consola:
+        Activar:
+          ionic integrations enable capacitor  
+        Desactivar:
+          ionic integrations disable capacitor
+
+4_  Integrar ios y android:
+      
+      En consola:
+        Ios:
+          ionic capacitor add ios
+        Android:
+          ionic capacitor add android
+
+
+
+PONER PROYECTO PARA PRODUCCIÓN
+
+1_  Poner para producción web:
+      
+      En consola:
+        ionic build | npm build
+
+2_  Integrar ios y android:
+      
+      En consola:
+        Ios:
+          ionic capacitor add ios
+        Android:
+          ionic capacitor add android
+
+3_  Copear datos:
+      
+      En consola:
+        ionic cap copy
+
+4_  Sincronizar datos:
+      
+      En consola:
+        ionic cap sym | ionic cap sym
+
+5_  Abrir android estudio para crear apk:
+      
+      En consola:
+        ionic cap open android
+
+
+
+COMANDOS VARIOS
+
+1_  Si descargarte un proyecto de GitHub:
+      
+      En consola:
+        npm i
+
+2_  Iniciar servidor npm/react:
+      
+      En consola:
+        npm run start
+
+
+
+DATOS IMPORTANTES
+
+1_ Importar react en los tsx
+      
+    import React from 'react';
+    import ReactDOM from 'react-dom';
+
+2_ No ejecutar (aunque lo diga en consola) daña el proyecto:
+    
+    npm audit fix --force
+
+
