@@ -41,7 +41,7 @@ const PaginaPrincipal: React.FC = () => {
       {/* Barra principal */}
       <BarraPrincipal titulo={tituloBarra(URL_LOCATION)} />
 
-      <IonContent fullscreen>
+      <IonContent fullscreen style={{ backgroundColor: "transparent" }}>
         {/* Pagina principal */}
         <ExploradorDePaginas titulo={URL_LOCATION} />
       </IonContent>

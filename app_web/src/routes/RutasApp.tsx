@@ -12,15 +12,15 @@ const RutasApp: React.FC = () => {
   const [intro, setIntro] = useState<boolean>(true);
 
   //Intro
-  useEffect(() => {
-    setTimeout(() => {
-      setIntro(false);
-    }, 2500);
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setIntro(false);
+  //   }, 2500);
+  // }, []);
 
-  if (intro) {
-    return <CortinaInicial />;
-  }
+  // if (intro) {
+  //   return <CortinaInicial />;
+  // }
 
   //Contenedor
   return (
