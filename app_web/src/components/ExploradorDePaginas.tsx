@@ -11,6 +11,7 @@ import PaginaScroll from "../pages/PaginaScroll";
 import PaginaUbicacion from "../pages/PaginaUbicacion";
 import PaginaPorDefecto from "./PaginaPorDefecto";
 import PaginaQR from "../pages/PaginaQR";
+import ListaDatosQR from "../pages/listaDatosQR";
 
 //Parámetros
 interface Props {
@@ -41,8 +42,10 @@ const ExploradorDePaginas: React.FC<Props> = (props) => {
       return <PaginaPorDefecto />;
     case URL_APP + "lector/qr":
       return <PaginaQR />;
+    case URL_APP + "lista/qr":
+      return <ListaDatosQR />;
     default:
-      return <Redirect to={URL_APP + "input"} />;
+      return <Redirect to={URL_APP + "lector/qr"} />;
   }
 };
 

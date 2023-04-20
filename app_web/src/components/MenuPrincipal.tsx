@@ -53,6 +53,12 @@ const paginas: Pagina[] = [
     iconoIos: cubeOutline,
     iconoAndroid: cubeSharp,
   },
+  {
+    titulo: "Lista de datos",
+    url: URL_APP + "lista/qr",
+    iconoIos: listOutline,
+    iconoAndroid: listSharp,
+  },
   // {
   //   titulo: "Inputs",
   //   url: URL_APP + "input",
@@ -146,7 +152,7 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>APP PARA QR</IonListHeader>
+          <IonListHeader>APP WEB</IonListHeader>
 
           <IonNote>por Edain Jesus CC</IonNote>
           <br />

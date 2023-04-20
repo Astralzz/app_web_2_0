@@ -16,7 +16,7 @@ const tituloBarra = (url: string): string => {
     case URL_APP + "otros":
       return "Algunos componentes de ionic";
     case URL_APP + "camara":
-      return "Uso de la camara";
+      return "Uso de la cámara";
     case URL_APP + "navegador":
       return "Navegador dentro de la app";
     case URL_APP + "cookies":
@@ -24,7 +24,11 @@ const tituloBarra = (url: string): string => {
     case URL_APP + "conexion":
       return "Conexion de internet";
     case URL_APP + "ubicacion":
-      return "Mi localizacion";
+      return "Mi localización";
+    case URL_APP + "lector/qr":
+      return "Escáner";
+    case URL_APP + "lista/qr":
+      return "Lista de datos";
     default:
       return "???";
   }

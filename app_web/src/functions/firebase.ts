@@ -2,17 +2,15 @@ import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   collection,
-  getDocs,
   addDoc,
-  Primitive,
+  getDocs,
 } from "firebase/firestore/lite";
-import { sync } from "ionicons/icons";
 // Siga este patrón para importar otros servicios de Firebase
 // import {} de 'Firebase/<service>';
 
-export interface BD_Registros {
-  hora:string;
-  fecha:string;
+export interface RegistrosBD {
+  hora: string;
+  fecha: string;
   id_par: string;
   id_taller: string;
   nombre: string;
@@ -37,7 +35,8 @@ const APP_FIREBASE = initializeApp(firebaseConfig);
 const DB_FIREBASE = getFirestore(APP_FIREBASE);
 const REFERENCIA_BD = collection(DB_FIREBASE, "registros");
 
-const agregarDatosFirebase = async (data: BD_Registros): Promise<boolean> => {
+// * Agregar datos a la tabla
+const agregarDatosFirebase = async (data: RegistrosBD): Promise<boolean> => {
   try {
     const res = await addDoc(REFERENCIA_BD, data);
 
@@ -52,4 +51,60 @@ const agregarDatosFirebase = async (data: BD_Registros): Promise<boolean> => {
   }
 };
 
-export default agregarDatosFirebase;
+// Obtener una lista de ciudades de tu base de datos
+async function getLista(): Promise<RegistrosBD[]> {
+  // const columnas = collection(
+  //   REFERENCIA_BD,
+  //   "fecha",
+  //   "hora",
+  //   "id_par",
+  //   "id_taller",
+  //   "nombre",
+  //   "taller"
+  // );
+  // const data = await getDocs(columnas);
+  const data = await getDocs(REFERENCIA_BD);
+  console.log(data);
+
+  const lista: RegistrosBD[] = data.docs.map(
+    (doc) => doc.data() as RegistrosBD
+  );
+  return lista;
+}
+
+// Obtener los datos
+interface Respuesta {
+  estado: boolean;
+  lista?: RegistrosBD[];
+  error?: string;
+}
+
+const obtenerListaDeDatosFirebase = async (): Promise<Respuesta> => {
+  try {
+    // Llamar a la función getCities
+    const res = await getLista()
+      .then((data) => {
+        console.log(data);
+        return {
+          estado: true,
+          lista: data,
+        };
+      })
+      .catch((err) => {
+        console.log(err);
+        return {
+          estado: false,
+          error: err,
+        };
+      });
+
+    return res;
+  } catch (err) {
+    return {
+      estado: false,
+      error: "Error..." + err,
+    };
+  }
+};
+
+export { agregarDatosFirebase, obtenerListaDeDatosFirebase };
